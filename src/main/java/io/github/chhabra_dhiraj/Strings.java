@@ -8,12 +8,15 @@ public class Strings {
     }
 
     private static boolean isPalindrome(String str) {
-        String lowerStr = str.toLowerCase();
+        if (str == null || str.length() == 0 || str.length() == 1) {
+            return true;
+        }
+        str = str.toLowerCase();
         int i = 0;
-        int j = lowerStr.length() - 1;
+        int j = str.length() - 1;
 
         while (i < j) {
-            if (lowerStr.charAt(i) != lowerStr.charAt(j)) {
+            if (str.charAt(i) != str.charAt(j)) {
                 return false;
             }
             i++;
