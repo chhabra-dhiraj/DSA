@@ -33,7 +33,7 @@ public class LinearSearch {
         int count = 0;
 
         for (int num : arr) {
-            if (isNumDigitsEven(num)) {
+            if (isNumDigitsEvenOptimized(num)) {
                 count++;
             }
         }
