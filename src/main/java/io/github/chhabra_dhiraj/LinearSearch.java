@@ -8,6 +8,13 @@ public class LinearSearch {
         System.out.println("============================");
         System.out.println("============================");
         System.out.println(findEvenDigitNum(arr));
+        System.out.println("============================");
+        System.out.println("============================");
+        int[][] accounts = {
+                {1, 2, 3},
+                {3, 2, 1}
+        };
+        System.out.println(maximumWealth(accounts));
     }
 
     private static int findMin(int[] arr) {
@@ -64,5 +71,35 @@ public class LinearSearch {
         int count = (int) Math.log10(num) + 1;
 
         return count % 2 == 0;
+    }
+
+    // Richest wealth question
+    private static int maximumWealth(int[][] accounts) {
+        if (accounts == null || accounts.length == 0) {
+            return 0;
+        }
+
+        int max = getAccountWealth(accounts[0]);
+        for (int[] account : accounts) {
+            int accountWealth = getAccountWealth(account);
+            if (max < accountWealth) {
+                max = accountWealth;
+            }
+        }
+        return max;
+    }
+
+    private static int getAccountWealth(int[] account) {
+        if (account == null || account.length == 0) {
+            return 0;
+        }
+
+        int wealth = 0;
+
+        for (int m : account) {
+            wealth += m;
+        }
+
+        return wealth;
     }
 }
