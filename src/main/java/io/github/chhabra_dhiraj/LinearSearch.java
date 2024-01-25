@@ -55,4 +55,14 @@ public class LinearSearch {
 
         return count % 2 == 0;
     }
+
+    private static boolean isNumDigitsEvenOptimized(int num) {
+        if (num == 0) {
+            return false;
+        }
+
+        int count = (int) Math.log10(num) + 1;
+
+        return count % 2 == 0;
+    }
 }
