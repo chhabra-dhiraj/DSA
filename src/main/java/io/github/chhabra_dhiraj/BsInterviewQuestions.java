@@ -1,5 +1,7 @@
 package io.github.chhabra_dhiraj;
 
+import java.util.Arrays;
+
 public class BsInterviewQuestions {
 
     public static void main(String[] args) {
@@ -13,6 +15,10 @@ public class BsInterviewQuestions {
         System.out.println("=================================");
         int[] inflectionArray = {3, 1, 2, 7, 9, 8};
         System.out.println(getInflectionNumber(inflectionArray));
+        System.out.println("=================================");
+        System.out.println("=================================");
+        int[] nums = {1, 5, 5, 8, 9, 10, 24, 48};
+        System.out.println(Arrays.toString(getFirstAndLastIndex(nums, 5)));
     }
 
     // Ceiling of a target number
@@ -106,5 +112,44 @@ public class BsInterviewQuestions {
         }
 
         return true;
+    }
+
+    private static int[] getFirstAndLastIndex(int[] nums, int target) {
+        if (nums == null) {
+            return new int[] {-1, -1};
+        }
+
+        int firstIndex = getIndex(nums, target, false);
+        int lastIndex = -1;
+        if (firstIndex != -1) {
+            lastIndex = getIndex(nums, target, true);
+        }
+
+        return new int[]{firstIndex, lastIndex};
+    }
+
+    private static int getIndex(int[] nums, int target, boolean toSearchLast) {
+        int start = 0;
+        int end = nums.length - 1;
+
+        int foundIndex = -1;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            int midElement = nums[mid];
+            if (target == midElement) {
+                foundIndex = mid;
+                if (toSearchLast) {
+                    start = mid + 1;
+                } else {
+                    end = mid - 1;
+                }
+            } else if (target > midElement) {
+                start = mid + 1;
+            } else if (target < midElement) {
+                end = mid - 1;
+            }
+        }
+
+        return foundIndex;
     }
 }
