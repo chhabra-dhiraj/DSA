@@ -22,6 +22,11 @@ public class Basics {
         System.out.println("================================");
 
         System.out.println(countOccurrences(27, 3));
+
+        System.out.println("================================");
+        System.out.println("================================");
+
+        System.out.println(reverseNum(-245));
     }
 
     private static int largestThree(int a, int b, int c) {
@@ -73,5 +78,18 @@ public class Basics {
         }
 
         return count;
+    }
+
+    private static int reverseNum(int num) {
+        int absNum = Math.abs(num);
+        int reverseNum = 0;
+
+        while(absNum > 0) {
+            int numDigit = absNum % 10;
+            absNum = absNum / 10;
+            reverseNum = reverseNum * 10 + numDigit;
+        }
+
+         if(num > 0) return reverseNum; else return -reverseNum;
     }
 }
