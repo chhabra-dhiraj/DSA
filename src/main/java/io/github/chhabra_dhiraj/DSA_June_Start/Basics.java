@@ -1,7 +1,5 @@
 package io.github.chhabra_dhiraj.DSA_June_Start;
 
-import java.util.Scanner;
-
 public class Basics {
     public static void main(String[] args) {
         System.out.println(largestThree(4, 6, 10));
