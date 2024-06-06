@@ -4,9 +4,7 @@ import java.util.Scanner;
 
 public class Basics {
     public static void main(String[] args) {
-//        Scanner input = new Scanner(System.in);
-//        int a = input.nextInt(), b = input.nextInt(), c = input.nextInt();
-//        System.out.println(largestThree(a, b, c));
+        System.out.println(largestThree(4, 6, 10));
 
         System.out.println("================================");
         System.out.println("================================");
