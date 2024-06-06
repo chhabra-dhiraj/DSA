@@ -4,9 +4,14 @@ import java.util.Scanner;
 
 public class Basics {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        int a = input.nextInt(), b = input.nextInt(), c = input.nextInt();
-        System.out.println(largestThree(a, b, c));
+//        Scanner input = new Scanner(System.in);
+//        int a = input.nextInt(), b = input.nextInt(), c = input.nextInt();
+//        System.out.println(largestThree(a, b, c));
+
+        System.out.println("================================");
+        System.out.println("================================");
+
+        System.out.println(checkUpperCase('z'));
     }
 
     private static int largestThree(int a, int b, int c) {
@@ -24,5 +29,9 @@ public class Basics {
         }
 
         return max;
+    }
+
+    private static boolean checkUpperCase(char ch) {
+        return ch >= 'A' && ch <= 'Z';
     }
 }
