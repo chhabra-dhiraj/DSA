@@ -17,6 +17,11 @@ public class Basics {
         System.out.println("================================");
 
         System.out.println(calFibonacciNum(8));
+
+        System.out.println("================================");
+        System.out.println("================================");
+
+        System.out.println(countOccurrences(27, 3));
     }
 
     private static int largestThree(int a, int b, int c) {
@@ -53,5 +58,20 @@ public class Basics {
         }
 
         return num;
+    }
+
+    private static int countOccurrences(int num, int digit) {
+        int absNum = Math.abs(num);
+        int count = 0;
+
+        while(absNum > 0) {
+            int numDigit = absNum % 10;
+            if (numDigit == digit) {
+                count++;
+            }
+            absNum = absNum / 10;
+        }
+
+        return count;
     }
 }
