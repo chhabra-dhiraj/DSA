@@ -23,6 +23,11 @@ public class Basics {
         System.out.println("================================");
 
         System.out.println(reverseNum(-245));
+
+        System.out.println("================================");
+        System.out.println("================================");
+
+        System.out.println(isPrime(6));
     }
 
     private static int largestThree(int a, int b, int c) {
@@ -87,5 +92,18 @@ public class Basics {
         }
 
          if(num > 0) return reverseNum; else return -reverseNum;
+    }
+
+    private static boolean isPrime(int num) {
+        if (num < 2) return false;
+
+        int i = 2;
+
+        while(i * i <= num) {
+            if (num % i == 0) return false;
+            i++;
+        }
+
+        return true;
     }
 }
