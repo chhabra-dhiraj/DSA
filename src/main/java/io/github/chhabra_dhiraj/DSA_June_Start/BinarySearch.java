@@ -3,9 +3,9 @@ package io.github.chhabra_dhiraj.DSA_June_Start;
 public class BinarySearch {
 
     public static void main(String[] args) {
-        int[] arr = {3, 4, -1, 6, 7};
+        int[] arr = {24, 9, 8, -2, -4};
 
-        System.out.println(binarySearch(arr, 7));
+        System.out.println(binarySearch(arr, 27));
     }
 
     private static int binarySearch(int[] arr, int element) {
