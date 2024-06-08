@@ -50,7 +50,7 @@ public class BinarySearch {
         return -1;
     }
 
-    private static int[] binarySearchMatrix(int[][] matrix, int target) {
+    private static int[] searchRowColSortedMatrix(int[][] matrix, int target) {
         int row = 0, column = matrix.length - 1;
         while (row < matrix.length && column >= 0) {
             if (target == matrix[row][column]) {
