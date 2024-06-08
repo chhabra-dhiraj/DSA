@@ -15,6 +15,8 @@ public class BinarySearch {
 
         int start = 0, end = arr.length - 1;
 
+        boolean isAsc = arr[end] > arr[start];
+
         while (start <= end) {
             int mid = start + (end - start) / 2;
             int mElement = arr[mid];
@@ -23,11 +25,19 @@ public class BinarySearch {
             }
 
             if (element > mElement) {
-                start = mid + 1;
+                if (isAsc) {
+                    start = mid + 1;
+                } else {
+                    end = mid - 1;
+                }
             }
 
             if (element < mElement) {
-                end = mid - 1;
+                if (isAsc) {
+                    end = mid - 1;
+                } else {
+                    start = mid + 1;
+                }
             }
         }
 
