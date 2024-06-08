@@ -12,7 +12,8 @@ public class Array {
         System.out.println("==================");
         System.out.println("==================");
 
-        System.out.println(Arrays.toString(reverseArray(arr)));
+        reverseArray(arr);
+        System.out.println(Arrays.toString(arr));
     }
 
     private static int getMaxValue(int[] arr) {
@@ -30,9 +31,9 @@ public class Array {
         return max;
     }
 
-    private static int[] reverseArray(int[] arr) {
+    private static void reverseArray(int[] arr) {
         if (arr == null || arr.length == 1) {
-            return arr;
+            return;
         }
 
         int i = 0, j = arr.length - 1;
@@ -43,7 +44,5 @@ public class Array {
             i++;
             j--;
         }
-
-        return arr;
     }
 }
