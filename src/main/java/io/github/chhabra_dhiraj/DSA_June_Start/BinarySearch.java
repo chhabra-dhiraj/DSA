@@ -22,17 +22,13 @@ public class BinarySearch {
             int mElement = arr[mid];
             if (element == mElement) {
                 return mid;
-            }
-
-            if (element > mElement) {
+            } else if (element > mElement) {
                 if (isAsc) {
                     start = mid + 1;
                 } else {
                     end = mid - 1;
                 }
-            }
-
-            if (element < mElement) {
+            } else {
                 if (isAsc) {
                     end = mid - 1;
                 } else {
