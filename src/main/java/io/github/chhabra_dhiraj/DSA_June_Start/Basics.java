@@ -27,7 +27,7 @@ public class Basics {
         System.out.println("================================");
         System.out.println("================================");
 
-        System.out.println(isPrime(6));
+        System.out.println(isPrime(83));
     }
 
     private static int largestThree(int a, int b, int c) {
