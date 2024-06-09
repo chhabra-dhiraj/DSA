@@ -14,6 +14,12 @@ public class BinarySearch {
 
         int[][] matrix = {{10, 20, 30, 40}, {15, 25, 35, 45}, {28, 29, 37, 49}, {33, 34, 38, 50}};
         System.out.println(Arrays.toString(searchRowColSortedMatrix(matrix, 10)));
+
+        System.out.println("=================================");
+        System.out.println("=================================");
+
+        int[][] matrix2 = {{10}, {15}, {28}, {33}};
+        System.out.println(Arrays.toString(binarySearch2D(matrix2, 28)));
     }
 
     private static int binarySearch(int[] arr, int element) {
@@ -61,6 +67,77 @@ public class BinarySearch {
                 row++;
             } else {
                 column--;
+            }
+        }
+
+        return new int[]{-1, -1};
+    }
+
+    private static int[] binarySearch2D(int[][] matrix, int target) {
+        if(matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return new int[]{-1, -1};
+        }
+
+
+        int rStart = 0, rEnd = matrix.length - 1;
+        int cStart = 0, cEnd = matrix[0].length - 1;
+        int midCol = (cEnd - cStart) / 2;
+
+        if(matrix.length == 1) {
+            return binarySearch2DColRange(matrix, target, rStart, cStart, cEnd);
+        }
+
+        while (rEnd - rStart > 1) {
+            int midRow = rStart + (rEnd - rStart) / 2;
+            int midElement = matrix[midRow][midCol];
+
+            if (target == midElement) {
+                return new int[]{midRow, midCol};
+            }
+
+            if (target > midElement) {
+                rStart = midRow;
+            } else {
+                rEnd = midRow;
+            }
+        }
+
+        if (target == matrix[rStart][midCol]) {
+            return new int[]{rStart, midCol};
+        }
+
+        if (target == matrix[rEnd][midCol]) {
+            return new int[]{rEnd, midCol};
+        }
+
+        if (matrix[0].length > 1) {
+            if(target < matrix[rStart][midCol]) {
+                return binarySearch2DColRange(matrix, target, rStart, cStart, midCol - 1);
+            } else if(target < matrix[rStart][cEnd]){
+                return binarySearch2DColRange(matrix, target, rStart, midCol + 1, cEnd);
+            } else if(target < matrix[rEnd][midCol]) {
+                return binarySearch2DColRange(matrix, target, rEnd, cStart, midCol - 1);
+            } else {
+                return binarySearch2DColRange(matrix, target, rEnd, midCol + 1, cEnd);
+            }
+        }
+
+        return new int[]{-1, -1};
+    }
+
+    private static int[] binarySearch2DColRange(int[][] matrix, int target, int row, int cStart, int cEnd) {
+
+        while (cStart <= cEnd) {
+            int mid = cStart + (cEnd - cStart) / 2;
+            int mElement = matrix[row][mid];
+            if (target == mElement) {
+                return new int[]{row, mid};
+            }
+
+            if (target > mElement) {
+                cStart = mid + 1;
+            } else {
+                cEnd = mid - 1;
             }
         }
 
