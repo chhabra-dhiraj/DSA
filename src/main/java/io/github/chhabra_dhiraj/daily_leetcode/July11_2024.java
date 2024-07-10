@@ -18,24 +18,19 @@ public class July11_2024 {
             return 0;
         }
 
-        ArrayList<String> inFolders = new ArrayList<>();
-        inFolders.add(MAIN_FOLDER);
-
+        int depth = 0;
         for (String operation : logs) {
-            int lastIndex = inFolders.size() - 1;
-            String current = inFolders.get(lastIndex);
             if (operation.charAt(0) == CURRENT_FOLDER_NOTATION) {
                 if (operation.charAt(1) == CURRENT_FOLDER_NOTATION) {
-                    if (!current.equals(MAIN_FOLDER)) {
-                        inFolders.remove(lastIndex);
+                    if (depth != 0) {
+                        depth--;
                     }
                 }
             } else {
-                String newFolder = operation.substring(0, operation.length() - 1);
-                inFolders.add(newFolder);
+                depth++;
             }
         }
 
-        return inFolders.size() - 1;
+        return depth;
     }
 }
