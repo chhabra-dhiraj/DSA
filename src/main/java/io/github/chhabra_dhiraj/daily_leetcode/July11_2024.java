@@ -1,7 +1,5 @@
 package io.github.chhabra_dhiraj.daily_leetcode;
 
-import java.util.ArrayList;
-
 public class July11_2024 {
 
     private static final String MAIN_FOLDER = "main";
