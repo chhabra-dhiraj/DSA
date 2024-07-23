@@ -8,7 +8,9 @@ public class July23_2024 {
     public static void main(String[] args) {
         int[] nums = {-1, 0, 1, 2, -1, -4};
 
-        System.out.println(Arrays.toString(threeSum(nums)));
+        for (List<Integer> triplet : threeSum(nums)) {
+            System.out.println(triplet.toString());
+        }
     }
 
     public static List<List<Integer>> threeSum(int[] nums) {
