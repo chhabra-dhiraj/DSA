@@ -14,8 +14,7 @@ public class Dec27_2024 {
             return nums[0];
         }
 
-        int sum = 0;
-        int max = Integer.MIN_VALUE;
+        int sum = 0, max = Integer.MIN_VALUE;
 
         for (int num : nums) {
             sum += num;
