@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Jan28_2025 {
 
     public static void main(String[] args) {
-        int[] nums = {2, 0, 1};
+        int[] nums = {2, 0, 2, 1, 1, 0};
         sortColors(nums);
         System.out.println(Arrays.toString(nums));
     }
@@ -15,18 +15,31 @@ public class Jan28_2025 {
             return;
         }
 
-        for (int i = nums.length - 1; i > 0; i--) {
-            for (int j = 0; j < i; j++) {
-                if (nums[j] > nums[i]) {
-                    swap(nums, i, j);
-                }
+        int[] colorsCount = new int[3];
+
+        for (int color : nums) {
+            if (color == 0) {
+                colorsCount[0]++;
+            } else if (color == 1) {
+                colorsCount[1]++;
+            } else {
+                colorsCount[2]++;
+            }
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            if (colorsCount[0] != 0) {
+                insertColor(nums, colorsCount, i, 0, 0);
+            } else if (colorsCount[1] != 0) {
+                insertColor(nums, colorsCount, i, 1, 1);
+            } else if (colorsCount[2] != 0) {
+                insertColor(nums, colorsCount, i, 2, 2);
             }
         }
     }
 
-    private static void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
+    private static void insertColor(int[] nums, int[] colorsCount, int insertInd, int colorInd, int colorVal) {
+        nums[insertInd] = colorVal;
+        colorsCount[colorInd]--;
     }
 }
