@@ -10,43 +10,33 @@ public class Jan6_2025 {
     }
 
     public static int mincostTickets(int[] days, int[] costs) {
-        int tc = 0;
-        int fdw = days[0];
-        int fdm = days[0];
-        int pwc = 0;
-        int pmc = 0;
-
-        for (int i = 0; i < days.length; i++) {
-            boolean weekChange = days[i] - fdw >= 7;
-            boolean monthChange = days[i] - fdm >= 30;
-            boolean lastDay = i == days.length - 1;
-
-            int costSoFar;
-            if (weekChange && monthChange) {
-                costSoFar = Math.min(tc, Math.min(pwc + costs[1], pmc + costs[2]));
-                pwc = costSoFar;
-                pmc = costSoFar;
-                fdw = days[i];
-                fdm = days[i];
-            } else if (weekChange) {
-                costSoFar = Math.min(tc, pwc + costs[1]);
-                pwc = costSoFar;
-                fdw = days[i];
-            } else if (monthChange) {
-                costSoFar = Math.min(tc, pmc + costs[2]);
-                pmc = costSoFar;
-                fdm = days[i];
-            } else {
-                costSoFar = tc;
-            }
-
-            if (lastDay) {
-                tc = Math.min(costSoFar + costs[0], Math.min(pwc + costs[1], pmc + costs[2]));
-            } else {
-                tc = costSoFar + costs[0];
-            }
+        int dailyCost = costs[0];
+        int weeklyCost = costs[1];
+        int monthlyCost = costs[2];
+        if (days.length == 1) {
+            return Math.min(monthlyCost, Math.min(dailyCost, weeklyCost));
         }
 
-        return tc;
+        int numTravelDays = days.length;
+        int[] pointOptimizedCost = new int[numTravelDays];
+
+        int firstDayWeekInd = 0, firstDayMonthInd = 0;
+
+        for (int i = 0; i < days.length; i++) {
+            if(i == 0) {
+                pointOptimizedCost[0] = dailyCost;
+                continue;
+            }
+            int firstDayWeek = days[firstDayWeekInd];
+            int currentDay = days[i];
+
+            if(currentDay - firstDayWeek >= 7) {
+                int optimizedCostBeforeCurrentWeek = firstDayWeek > 0 ? pointOptimizedCost[firstDayWeek - 1] : 0;
+                int weekConsideredOptimizedCost = optimizedCostBeforeCurrentWeek + weeklyCost + dailyCost;
+                int dayConsideredOptimizedCost = pointOptimizedCost[i - 1] + dailyCost;
+                pointOptimizedCost[i] = Math.min(weekConsideredOptimizedCost, dayConsideredOptimizedCost);
+                firstDayWeekInd++;
+            }
+        }
     }
 }
