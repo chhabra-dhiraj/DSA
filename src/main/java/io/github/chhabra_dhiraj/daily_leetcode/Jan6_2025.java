@@ -13,16 +13,17 @@ public class Jan6_2025 {
         int dailyCost = costs[0];
         int weeklyCost = costs[1];
         int monthlyCost = costs[2];
-        if (days.length == 1) {
+        int numTravelDays = days.length;
+
+        if (numTravelDays == 1) {
             return Math.min(monthlyCost, Math.min(dailyCost, weeklyCost));
         }
 
-        int numTravelDays = days.length;
         int[] pointOptimizedCost = new int[numTravelDays];
 
         int firstDayWeekInd = 0, firstDayMonthInd = 0;
 
-        for (int i = 0; i < days.length; i++) {
+        for (int i = 0; i < numTravelDays; i++) {
             if(i == 0) {
                 pointOptimizedCost[0] = dailyCost;
                 continue;
@@ -39,6 +40,6 @@ public class Jan6_2025 {
             }
         }
 
-        return pointOptimizedCost[days.length - 1];
+        return pointOptimizedCost[numTravelDays - 1];
     }
 }
