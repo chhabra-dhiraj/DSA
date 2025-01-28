@@ -38,5 +38,7 @@ public class Jan6_2025 {
                 firstDayWeekInd++;
             }
         }
+
+        return pointOptimizedCost[days.length - 1];
     }
 }
