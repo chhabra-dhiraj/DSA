@@ -18,18 +18,18 @@ public class Jan29_2025 {
         for (int i = 0; i < nums.length; i++) {
             int element = nums[i];
             Integer prevElement = i != 0 ? nums[i - 1] : null;
-            if(i == 0) {
+            if (i == 0) {
                 if (element == 0) {
                     if (nums[i + 1] == 0 && nums[i + 2] == 0) {
                         triplets.add(new ArrayList<>(Arrays.asList(0, 0, 0)));
                         return triplets;
                     }
-                } else if (element > 0){
+                } else if (element > 0) {
                     return triplets;
                 }
             }
 
-            if(prevElement != null && element == prevElement) {
+            if (prevElement != null && element == prevElement) {
                 i++;
                 continue;
             }
@@ -42,12 +42,14 @@ public class Jan29_2025 {
                 int positiveSum = 0;
                 int j = nums.length - 1;
                 while (true) {
-                int positiveElement = nums[j];
-                int elementAbs = Math.abs(element);
+                    int positiveElement = nums[j];
+                    int elementAbs = Math.abs(element);
 //                if(Math.log(elementAbs, positiveElement) > 0 && Math.)
 //
 //                }
+                }
             }
         }
+        return triplets;
     }
 }
