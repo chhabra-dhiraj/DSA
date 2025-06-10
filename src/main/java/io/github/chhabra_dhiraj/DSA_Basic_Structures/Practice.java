@@ -1,4 +1,4 @@
-package io.github.chhabra_dhiraj.DSA_June_Start;
+package io.github.chhabra_dhiraj.DSA_Basic_Structures;
 
 public class Practice {
 

@@ -1,6 +1,5 @@
-package io.github.chhabra_dhiraj.DSA_June_Start;
+package io.github.chhabra_dhiraj.DSA_Basic_Structures;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Array {
